@@ -37,7 +37,7 @@ trait ResponseSignatureValidation
 
         $signature = new Signature(
             $this->getRequest()->getVnpHashSecret(),
-            $data['vnp_SecureHashType'] ?? 'md5'
+            $data['vnp_SecureHashType'] ?? 'sha256'
         );
 
         if (! $signature->validate($dataSignature, $data['vnp_SecureHash'])) {
